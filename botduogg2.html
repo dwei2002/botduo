@@ -1,0 +1,914 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset=UTF-8>
+        <title>Aaron is SB</title>
+        <link rel="icon" href="https://static.wikia.nocookie.net/leagueoflegends/images/8/81/League_of_Legends_icon_old2.png/revision/latest?cb=20191018221818">
+        <style>
+            body {
+                background-color: #00004d;
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                display: grid;
+                grid-template-areas:
+                    "layout1 layout1"
+                    "layout2 layout3"
+                    "layout2 layout4"
+                    "layout2 layout5";
+                grid-template-rows: auto min-content min-content 1fr;
+                grid-template-columns: 1fr 1fr;
+                width: 100%;
+                gap: 20px;
+            }
+
+            #layout1{
+                grid-area: layout1;
+            }
+            #layout2{
+                grid-area: layout2;
+            }
+            #layout3{
+                grid-area: layout3;
+            }
+            #layout4{
+                grid-area: layout4;
+            }
+            #layout5{
+                grid-area: layout5;
+            }
+
+            #heading {
+                background-color: rgba(175, 129, 21, 0.76);
+                color: white;
+                padding: 10px;
+                text-align: center;
+                font-size: 48px;
+                width: 100%;
+            }
+
+            .selection {
+                margin-left: 30px;
+            }
+
+            #champ_table {
+                border-collapse: collapse;
+                width: 635px;
+                height: 3600px;
+                background-color: black;
+                margin-top: 30px;
+                table-layout: fixed;
+            }
+
+            #champ_table td {
+                border: 10px solid darkred;
+                width: 90px;
+                height: 90px;
+                padding: 0;
+                line-height: 0%;
+            }
+
+            .champpic {
+                margin: 5px;
+                height: 105px;
+                width: 105px;
+            }
+
+            .champpic:hover {
+                margin: 0;
+                height: 115px;
+                width: 115px;
+            }
+
+            .twomatch {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                margin-top: 30px;
+            }
+
+            #c1, #c2 {
+                height: 200px;
+                width: 200px;
+                margin: 0;
+            }
+
+            #combo_header{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            #combo_header table {
+                border-collapse: collapse;
+                width: 100%;
+                height: 100%;
+            }
+
+            #combo_header tr{
+                border-top: 5px solid rgb(55, 0, 255);
+                border-left: 0px solid rgb(55, 0, 255);
+                border-right: 0px solid rgb(55, 0, 255);
+            }
+
+            #tier_title {
+                font-size: 36px;
+                font-weight: bold;
+                color: rgb(217, 255, 0);
+                text-align: center;
+                padding: 10px;
+            }
+
+            #tier_title td{
+                padding:10px;
+                text-align: center;
+            }
+
+            #combo_tier img{
+                width: 100px;
+                height: 100px;
+                padding: 10px;
+            }
+
+            .articles {
+                font-size: 24px;
+                color: white;
+                max-width: 100%;
+                margin: 10px;
+                display: none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="layout1">
+            <div id="heading">
+                <p>heading</p>
+            </div>
+        </div>
+
+
+        <div id="layout2">
+            <div class="selection">
+                <table id="champ_table">
+                    <tr>
+                        <td><img id="aatrox" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/15/Aatrox_OriginalSquare.png"></td>
+                        <td><img id="ahri" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2a/Ahri_OriginalSquare.png"></td>
+                        <td><img id="akali" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6a/Akali_OriginalSquare.png"></td>
+                        <td><img id="alistar" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ee/Alistar_OriginalSquare.png"></td>
+                        <td><img id="amumu" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Amumu_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="anivia" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0e/Anivia_OriginalSquare.png"></td>
+                        <td><img id="annie" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/18/Annie_OriginalSquare.png"></td>
+                        <td><img id="aphelios" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/92/Aphelios_OriginalSquare.png"></td>
+                        <td><img id="ashe" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7e/Ashe_OriginalSquare.png"></td>
+                        <td><img id="asol" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/63/Aurelion_Sol_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="azir" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/77/Azir_OriginalSquare.png"></td>
+                        <td><img id="bard" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/37/Bard_OriginalSquare.png"></td>
+                        <td><img id="blitzcrank" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/ac/Blitzcrank_OriginalSquare.png"></td>
+                        <td><img id="brand" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9a/Brand_OriginalSquare.png"></td>
+                        <td><img id="braum" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/28/Braum_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="caitlin" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/35/Caitlyn_OriginalSquare.png"></td>
+                        <td><img id="camille" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0d/Camille_OriginalSquare.png"></td>
+                        <td><img id="cassiopeia" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/10/Cassiopeia_OriginalSquare.png"></td>
+                        <td><img id="cho’gath" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/28/Cho%27Gath_OriginalSquare.png"></td>
+                        <td><img id="corki" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b2/Corki_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="darius" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/59/Darius_OriginalSquare.png"></td>
+                        <td><img id="diana" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/da/Diana_OriginalSquare.png"></td>
+                        <td><img id="dr. mundo" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c3/Dr._Mundo_OriginalSquare.png"></td>
+                        <td><img id="draven" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f2/Draven_OriginalSquare.png"></td>
+                        <td><img id="ekko" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Ekko_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="elise" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1b/Elise_OriginalSquare.png"></td>
+                        <td><img id="evelynn" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c1/Evelynn_OriginalSquare.png"></td>
+                        <td><img id="ezreal" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/54/Ezreal_OriginalSquare.png/"></td>
+                        <td><img id="fiddlesticks" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a5/Fiddlesticks_OriginalSquare.png"></td>
+                        <td><img id="fiora" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/94/Fiora_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="fizz" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Fizz_OriginalSquare.png"></td>
+                        <td><img id="gallio" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8d/Galio_OriginalSquare.png"></td>
+                        <td><img id="gangplank" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4e/Gangplank_OriginalSquare.png"></td>
+                        <td><img id="garen" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/97/Garen_OriginalSquare.png"></td>
+                        <td><img id="gnar" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2d/Gnar_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="gragas" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/02/Gragas_OriginalSquare.png"></td>
+                        <td><img id="graves" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c7/Graves_OriginalSquare.png"></td>
+                        <td><img id="hecarim" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/ca/Hecarim_OriginalSquare.png"></td>
+                        <td><img id="heimerdinger" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/97/Heimerdinger_OriginalSquare.png"></td>
+                        <td><img id="illaoi" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/12/Illaoi_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="irelia" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/eb/Irelia_OriginalSquare.png"></td>
+                        <td><img id="ivern" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/66/Ivern_OriginalSquare.png"></td>
+                        <td><img id="janna" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3f/Janna_OriginalSquare.png"></td>
+                        <td><img id="jarvan IV" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4c/Jarvan_IV_OriginalSquare.png"></td>
+                        <td><img id="jax" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f5/Jax_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="jayce" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/de/Jayce_OriginalSquare.png"></td>
+                        <td><img id="jhin" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0b/Jhin_OriginalSquare.png"></td>
+                        <td><img id="jinx" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/65/Jinx_OriginalSquare.png"></td>
+                        <td><img id="kaisa" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/15/Kai%27Sa_OriginalSquare.png"></td>
+                        <td><img id="kalista" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4d/Kalista_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="karma" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f7/Karma_OriginalSquare.png"></td>
+                        <td><img id="karthus" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a9/Karthus_OriginalSquare.png"></td>
+                        <td><img id="kassadin" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/94/Kassadin_OriginalSquare.png"></td>
+                        <td><img id="katarina" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7e/Katarina_OriginalSquare.png"></td>
+                        <td><img id="kayle" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8b/Kayle_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="kayn" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c9/Kayn_OriginalSquare.png"></td>
+                        <td><img id="kennen" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7b/Kennen_OriginalSquare.png"></td>
+                        <td><img id="khazix" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Kha%27Zix_OriginalSquare.png"></td>
+                        <td><img id="kindred" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3c/Kindred_OriginalSquare.png"></td>
+                        <td><img id="kled" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c4/Kled_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="kogmaw" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/bd/Kog%27Maw_OriginalSquare.png"></td>
+                        <td><img id="leblanc" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/ba/LeBlanc_OriginalSquare.png"></td>
+                        <td><img id="lee_sin" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/16/Lee_Sin_OriginalSquare.png"></td>
+                        <td><img id="leona" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/ba/Leona_OriginalSquare.png"></td>
+                        <td><img id="lillia" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/35/Lillia_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="lissandra" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6c/Lissandra_OriginalSquare.png"></td>
+                        <td><img id="lucian" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/10/Lucian_OriginalSquare.png"></td>
+                        <td><img id="lulu" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/bb/Lulu_OriginalSquare.png"></td>
+                        <td><img id="lux" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/bf/Lux_OriginalSquare.png"></td>
+                        <td><img id="malphite" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/10/Malphite_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="malzahar" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/44/Malzahar_OriginalSquare.png"></td>
+                        <td><img id="maokai" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/02/Maokai_OriginalSquare.png"></td>
+                        <td><img id="master_yi" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/73/Master_Yi_OriginalSquare.png"></td>
+                        <td><img id="miss_fortune" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/72/Miss_Fortune_OriginalSquare.png"></td>
+                        <td><img id="mordekaiser" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/77/Mordekaiser_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="morgana" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/79/Morgana_OriginalSquare.png"></td>
+                        <td><img id="nami" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/dd/Nami_OriginalSquare.png"></td>
+                        <td><img id="nasus" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/43/Nasus_OriginalSquare.png"></td>
+                        <td><img id="nautilus" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/d2/Nautilus_OriginalSquare.png"></td>
+                        <td><img id="neeko" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2e/Neeko_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="nidalee" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/91/Nidalee_OriginalSquare.png"></td>
+                        <td><img id="nocturne" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a9/Nocturne_OriginalSquare.png"></td>
+                        <td><img id="nunu" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f9/Nunu_OriginalSquare.png"></td>
+                        <td><img id="olaf" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7e/Olaf_OriginalSquare.png"></td>
+                        <td><img id="orianna" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/70/Orianna_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="ornn" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/ca/Ornn_OriginalSquare.png"></td>
+                        <td><img id="pantheon" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/03/Pantheon_OriginalSquare.png"></td>
+                        <td><img id="poppy" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/28/Poppy_OriginalSquare.png"></td>
+                        <td><img id="pyke" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c4/Pyke_OriginalSquare.png"></td>
+                        <td><img id="qiyana" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f1/Qiyana_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="quinn" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c6/Quinn_OriginalSquare.png"></td>
+                        <td><img id="rakan" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9a/Rakan_OriginalSquare.png"></td>
+                        <td><img id="rammus" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a1/Rammus_OriginalSquare.png"></td>
+                        <td><img id="reksai" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0b/Rek%27Sai_OriginalSquare.png"></td>
+                        <td><img id="renekton" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a4/Renekton_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="rengar" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b3/Rengar_OriginalSquare.png"></td>
+                        <td><img id="riven" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/62/Riven_OriginalSquare.png"></td>
+                        <td><img id="rumble" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/be/Rumble_OriginalSquare.png"></td>
+                        <td><img id="ryze" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/23/Ryze_OriginalSquare.png"></td>
+                        <td><img id="sejuani" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/62/Sejuani_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="senna" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1c/Senna_OriginalSquare.png"></td>
+                        <td><img id="sett" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/da/Sett_OriginalSquare.png"></td>
+                        <td><img id="shaco" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e1/Shaco_OriginalSquare.png"></td>
+                        <td><img id="shen" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/81/Shen_OriginalSquare.png"></td>
+                        <td><img id="shyvana" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f3/Shyvana_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="singed" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f4/Singed_OriginalSquare.png"></td>
+                        <td><img id="sion" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ea/Sion_OriginalSquare.png"></td>
+                        <td><img id="sivir" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/90/Sivir_OriginalSquare.png"></td>
+                        <td><img id="skarner" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3e/Skarner_OriginalSquare.png"></td>
+                        <td><img id="sona" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/fb/Sona_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="soraka" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/65/Soraka_OriginalSquare.png"></td>
+                        <td><img id="swain" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/32/Swain_OriginalSquare.png"></td>
+                        <td><img id="sylas" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/be/Sylas_OriginalSquare.png"></td>
+                        <td><img id="syndra" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/de/Syndra_OriginalSquare.png"></td>
+                        <td><img id="tahm kench" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3d/Tahm_Kench_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="taliyah" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f8/Taliyah_OriginalSquare.png"></td>
+                        <td><img id="talon" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/34/Talon_OriginalSquare.png"></td>
+                        <td><img id="taric" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a1/Taric_OriginalSquare.png"></td>
+                        <td><img id="teemo" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9c/Teemo_OriginalSquare.png"></td>
+                        <td><img id="thresh" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c3/Thresh_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="tristana" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/08/Tristana_OriginalSquare.png"></td>
+                        <td><img id="trundle" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Trundle_OriginalSquare.png"></td>
+                        <td><img id="tryndamere" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c6/Tryndamere_OriginalSquare.png"></td>
+                        <td><img id="twisted_fate" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2e/Twisted_Fate_OriginalSquare.png"></td>
+                        <td><img id="twitch" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/fb/Twitch_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="udyr" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2b/Udyr_OriginalSquare.png"></td>
+                        <td><img id="urgot" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/d0/Urgot_OriginalSquare.png"></td>
+                        <td><img id="varus" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9c/Varus_OriginalSquare.png"></td>
+                        <td><img id="vayn" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/05/Vayne_OriginalSquare.png"></td>
+                        <td><img id="veigar" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/37/Veigar_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="velkoz" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0e/Vel%27Koz_OriginalSquare.png"></td>
+                        <td><img id="vi" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ec/Vi_OriginalSquare.png"></td>
+                        <td><img id="viktor" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1c/Viktor_OriginalSquare.png"></td>
+                        <td><img id="vladimir" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/43/Vladimir_OriginalSquare.png"></td>
+                        <td><img id="volibear" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6d/Volibear_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="warwick" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/23/Warwick_OriginalSquare.png"></td>
+                        <td><img id="wukong" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/91/Wukong_OriginalSquare.png"></td>
+                        <td><img id="xayah" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4e/Xayah_OriginalSquare.png"></td>
+                        <td><img id="xerath" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cf/Xerath_OriginalSquare.png"></td>
+                        <td><img id="xin_zhao" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1f/Xin_Zhao_OriginalSquare.png"></td>
+                    </tr>            
+                    <tr>
+                        <td><img id="yasuo" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/ad/Yasuo_OriginalSquare.png"></td>
+                        <td><img id="yorick" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0f/Yorick_OriginalSquare.png"></td>
+                        <td><img id="yuumi" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6c/Yuumi_OriginalSquare.png"></td>
+                        <td><img id="zac" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/16/Zac_OriginalSquare.png"></td>
+                        <td><img id="zed" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/46/Zed_OriginalSquare.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="ziggs" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/72/Ziggs_OriginalSquare.png"></td>
+                        <td><img id="zilean" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1c/Zilean_OriginalSquare.png"></td>
+                        <td><img id="zoe" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2c/Zoe_OriginalSquare.png"></td>
+                        <td><img id="zyra" class="champpic" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0d/Zyra_OriginalSquare.png"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+        <div id="layout3">
+            <div class="twomatch">
+                <img id="c2" src="data:image/jpeg;base64,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">
+                <img id="c1" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALUAtQMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAADBAACBQEGB//EADkQAAICAQMDAgQFAgQFBQAAAAECAAMRBBIhBTFBE1EiYXGBBhQykaFCsQcjwfFicoLR8BUlM0NS/8QAGgEAAwEBAQEAAAAAAAAAAAAAAQIDAAQFBv/EACIRAAICAgICAwEBAAAAAAAAAAABAhEDEiExBEETImEyUf/aAAwDAQACEQMRAD8AyvWtPdpPVs9wYt6sgszPRPltRsW2fKW32NxxFVbMOhHmMOkOVMR3xNnQ21heUGfeYdW0nE29CERVzFZWBp03An9PGPMU1moRrdrWBBGq9QiKcDOJl6nXeo7qtS5PGYEWfR02rn4NTWR2zGastjbdQx9sRGrT5IDoACM9po6XQr6eSiA54HPaZiqw76fcnxvUD8jA/lkCktuI9x2jxoCquKu3kTM6tpxZ6C2IWC5wMEjJPy+QMSw/EmwlGmosf4Bu98GMXaOtOVKqPnENPoqWtX01LEf05/3M1a6LFULdzn9LHt9IFILxRRjaigg8Xowz7GG0yuFAUgmOHTWvcyV1h2b5Qw0N9WGdCg885j+iWv4KW+sq/FSGJ44mfZdbWxxpl5//AFNq11x2b6zK1i3lyUxiZGpILoje4+KulFPgd409Aett5x7TP01LEgvqNp9gY4PTQnc5c+8DHSMfX6VKzwm75TPai0qdtTAe83dZYUBFf6fpMd21LNy/wnxHRKcUZdtbBuWA+skaurcN8Qx7SQk9TKGfMso+WZQGXBgGSCKceMQ9ZzF1MNWeYwaH9PwR2+82dNyAOJjacZxNfSr2iyKQVj1zhK8EAzMZl3E7RnxiNPYthKpYrlOGwexg1pzyJOyzVFayxNeGIHnE1dFW3G0d/MVppA99vnHvNHSBgQBCxE+Q9tdrYDZ2iLavSPYtbK4baea28/vH8HPPvK2DNcRlU6Mqq6zT3bhWygcYz/pwP7zQs1j6rQmraKwCDkjn9pZVTa28Hd/TiWBJRNoA2Dj5wB2sv0PWDS6bUW6163KPw542r35/n9ph9R/xA6a+p+DTaiygMQSpXDD3A85neo0b6nrcfA361J4P1nzDqdDaXWXU1EgI5UEewMErXI+JRlwz6tVr9Nq9N+a0FzNS7EAP+pSPBiWqvrIItOT8p876V1rUdOsb09wrYAWY5Bx5IP18ET0g6umqRCGRgw4arJA+o7r/AGjQyx6YmXxpLmPI4ObcpYAM9h3mnRYyr5PP1mJucuAv6icADE0KN3ZmClRznzLNLtHLFtOmPai17K22K2AM9pjX2gj4rOfZZorcRS6KRtbvMfUBQ7Ht8pkNJlGsXP6n/eSLOVzJCTM4GWBgwZ3MAUgoMNW3MVUw1Z5hCa2mfBE0ug9Stp68h3VpprqWXe6hgdjMCMfXExKrAqFmOAoJMLV0qlhZ6uutqKadL6gvxbWck7fHsPeJmVot47qTZ6P8RDTJrzqvTS5b1BZdMdoUjgED58/tNTrHSq6tMbNEdSlqtk1XAY2+eZ8+/OXaV20zP65fbtbz5x9O83tL+LutUqy2MSCCBvGRmc8U0dU5RaPR6Dp2ruo31mu7B/8ArcdvfEaFFlTYsrdD7MMH+Z5rp34mr0J/z9PVcr4O5QQR956LSda03VQHre1aQcMHbIB+Upb6OdQjJjyaS+1dygEDxuEq2l1AyfSI+WZo6QhrUK5ZT8/7Ryx9NvYXOoPzOMfWK3TL/EjznoWjn0yD74hFT0ql9ZCu4/qx3mxrCtFfr1XA0qMnyAPeY/W9UToWurJ2tg/zg/wf5m2E+KvZXqFC7Sd2RjIny78SaZfzuob/AIsT3ydSVej6pmPx1ICD9wP+0+bdY1gaxznJPfMdu0SxxcZmGt35bUo6cshzg+ceJ7vUdF0mos02v6Yv5U21LapTsp7Hj6g9p87vbe7HOJ9T0D+l0DpasN9n5bAUHBb4ifsOe8GKEZumX8nJLHBOInXo201AZWZiOWcjjJlqiVyzNktmMX0+qoNzkt42kgL8gOwH8wVOkvs/MWsypTRXu9QLgFiQAp+eMn7TslBQR5UJucruy2fMR1g5zGWJzzFrz8JkujoXKEW7zkh7yTAozAZN0Fuk3QDJB1aEVsRdW5hQ3EZAaHqiHGxh8LDBino1lFNll9epCndvU/FjniG0zciaDol6BLVyo574m1sVTcDG0S23akOGANY8nvNG7V2pUab1X4h3HMcSjTrX6YqXb8gM/vKroKTZuLMQO23AxNohZZWxMaummkJdp9/u2OZpU9R0/S9OjrZtGSShbv2i12hQnct79+zDInmusJfbrNpC/ECo3DtznI9pLLHg6PGk2+z7t0fXVayiuynFYZRkj38xb8R/hq/qdNTaV2BV8shJKsPmvmeT6R+LOm9I6dp9NVuNta4dmycn3x4ifUv8VdVVbt0yJs7KCDkn5zmk+D0YHqei9G1H4f0GrfXaj1K7lA2IG2ge/IH/AIJ5Snqz3aJtJbqQwyVUMc8jkY/iE0v+J2o1T+nrdMqArjKsSCMEdvv/ABPH9Z1qW9c9WnYge1GZU/Tu4zgeAe/3iIZq+zZv6oy0kep/ltlWH15/uJ5PXXsbGUHkQzWN+WLZzyDELtzNu55hjK0Z40nYOos7gNjGfM+n6AJY3p6e9KrSqqtd/C2JtGwg+Mj6jOe0+c6JEZsOyqMd2yZ6ZdFqNZQ2u9U2OmBYCf0rngj5ZOPvLYpNMj5EVKJ6rJUN/wCoK+mVDjaSCXPfC+/17QWpvsuCZ2pUudlSNlVz/c/M/wAdp59L9bpXythymBlhuAA8YjFXVmuuRXqqQscMEGAfnidt7dnkSio/yaDdotYe8Yfzg8eBErTgmLJDYmLWfqknGbmSKVMUNO5gQ0sGioegqmFUxcGGrMZCMaqbBj1T8RBDgQ1bgHmEm+TRWziW9T5E/SUpCsvHmWNeOD3HMxJg7bcIPiAmP1HB1WnutyyhiCPtNWysZ57E8zL6uVNe0HALcHOMQS6LYX9+DB1JNuoIVyAWOPrCaDRodbU+oYsFcHb7mVvLHBdgcc8iXCapkDBXCkcHeAJwtcnsRfA7+I6KtHq1qptW0ldzlfBmRp1sutCpnIOdx8YjdWlLH/Nx9jkzS6ZWg1SUCsfFk/tFHToybHesvU/cHB4+cqw8RjriheqahRwdwH9oFOQflBEM7sqowZ6/8C6xKOoV1aoZ01wNVg90bgzygHMe0Lmq9HXwZaBz5ej2XW+kPoNTqNM77thGxh/Wp7H9v9Yp07Sp6htK5ZeFAnprtnVOj6HUWDNiqamPkgcj+5mYahpwa68YE7YdHi5v6FHOGxjEQuaNalxz7zPtfmFsfGijNzJAO3MkQuYgaXDQGZ0GIVaGVeMI0QVozW0dEpIdVuJ0N8XGftF1ed34hEo9D+H9Weo/+232omqrJOnZ2C7wf6Mn+PvNK7T2UK1GoqNVmed4xPAavNdnqocA+fnNrR/jHq9NS1fmt4UYHqqHx+8TemGWHbo3baWuYKCCFXknsB855bq96PdtqwUTsR5+cLq/xFrtUjrfflG/UqqFB/aZG5rG5z9BFnOyuDBrywq1blVsZywE1rtBVd0vT2XWBEZAOW29uP8ASK6egCnDYLHv7CdXX6vTJ6K2H01JO1gCM/eSyQdWdOPJbpE0HTtXawp0C16inH/zOwIX5ZHf6T3XTPwhpek9Lu631LVb7KqzjnA8cAeCTj954J+vdTUYp1Cp/wAqKMfsIhruqdS1aqut1N1qr+lXckLOZx/Ds2dcUA1dx1Gpe1sbrGLNj3M7V5gVr3DJ7wiccR4oSUrYYYJ5jVOQV9sxNY3S2cCUj2RyPg9/0a9j0jae28f2MBqbfjMS6bqNul2+5zO3vk5nZHo8qa+wHUWzNus5hr25iVrQ2NFFWt5nIBjzJFKGdnmTMGTJmIdFB0PMYQxRTDoeIyJTQ0rTuYAGWDRhAxwwwwyD4ilukKkms8ex8RjdxJuiyimNGTQpXTYeNh+s0KKVXnOW+UELMS4tgUUh5SbGCeMHH3j1HT2G19Tpi7dkrbIHfuR57dpPwvqdJT1ZdTrmRa9OhtBcZG4duPODz9pq0dUSjTarU6zUvdZYT6KsCNo8YB+sXI/QIRfZ5TV6auwu6tRS+TyWCDPt3xj7CY+oR67sPjJA5Vgyn5ggkGN64ajUWM2Qo7hTBaTp9tpJxlfJHaQcX/h1RmkuWVBGOOwnCZ3VUPprSjcjwfeB34/3gqhtl6GEOOYeg+pYPHz9oibOOYRLC3A4U+I0RZdHqul3+qGA7LgCO3HBx8p5/pd+xmA7ETTOpUsA5wPf2nWujzJr7A9QeYla0NqrVDkK2R4mfbZkwMeB1m5kgd8kWylCeJMSTsBcsneFBxBA4lt3EKFYTdLB4vul1MNi6jAaTdiCDThaGwKIQvOb4ImTMUokF3jyMzotPfOWPcmLkybpg0Meq2CM4yMGWbVM1KVKorVRhto/UfOTFd3MvbiuusqWZmXJz4gbF1LHA9gB7RTVOtm0LyF8zruW4J+05tzJylZSEK5F9vMNU3OJCmJTtFQ76NPROQ/HtC2agYA8xKh8Iz8+3EoXzzLqXBzPHbGWu3cQTWQW+c3QNjKFBd8kFukgsOpzM6DFhZO+pFsroMbpN0CLJBYPMNg1Db50NAh1lg6zWDUNuk3QJceJzfDZtQ+6TdAb5YPNYaCkyhMqXnC0IKLZ4MJY25UPsMQGYRHX+rsfPtFfRqJLgSpGPp4MgkmMmR+0WbJbA7kxlviGJ2seivqZy5/T8vnMlYdqO2f5CrWP1L+v/m9vtA5JOTOFsjvn3lMy3SFSCEzgMoWkVhnmANBMyQZZcyTGoTzITKbpC0mdFFtx8SwdoLMmZjUF3tJuaDBnSZjUX3tIHaDBnSZgUFDnzLB4uDLA8zWbUYVoQGLB8Qgsjpk3EPOg8wKvOh+YbFoYV8e33hA6HvuH05ipsnPUmpMGrHN9a8jcx9iOIKxi7ZP+0CtuRmcNkySBqy3mVJlS8oWmsdRLGTMHukLQWNQTMkFukmDqLySCdxJlTmZMzpE4BMYgM7mVloLMTM7nicHHMuB/PM1mKiTOJYjEqYGYm6WV5UmcjJmoLvlg2YA58SDPmGxdQ+6VLSobEt2w0GxtSBtvE76k4V4B95QiazUF38SpaUkzxDZtS+7iU3cyZHmVOPBxBYaLZklf+qSDYJWQSSTBOyGSSYxySSSBhJOqcGSSAB0sZVm4kkmCjmcywkkmMy2PhlgduQJJIQAmY5nRacYPMkkVhDq2QOPEpact9JJIUL7BzmZJIwToMqTzJJAE7mSSSAB//9k=">
+            </div>
+        </div>
+
+
+
+        <div id="layout4">
+            <div id="combo_header">
+                <table id="tier_tabel">
+                    <tr>
+                        <td id="tier_title">
+                            Duo Tier:
+                        </td>
+                        <td id="combo_tier">
+                            <img id="combo_tier_image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/2048px-Icon-round-Question_mark.svg.png">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+
+
+        <div id="layout5">
+            <div id="articles" class="articles">
+            <div id="aatroxahri">
+                <p>aatroxahri
+                    Ahri and Aatrox can be made into a decent bot lane duo. There are several reasons why this combo can work. The combination of the champions have an insane all-in, if you can hit the Ahri charm(E), you can follow up with the (Q) and (E) for maximum damage as well as the Aatrox Q1, Q2, Q3 for a definitive kill. If Aatrox hits the (W) and the enemy champ does not escape using the side of the (W) or flashing or dashing out, you can then follow up with a Ahri charm into full combo as well. However there are a few conditions that need to be met for this duo to work, first, the Aatrox needs to be a “good Aatrox” in which all or at least 2(Q)’s needs to be hit consistently. Secondly, the Ahri needs to be able to hit the skill shot for the charm when given the opportunity.<br> blahblahblah hahahahahahahahahahahaahahahahahahahahhaha 
+                </p>
+            </div>
+            <div id="aatroxakali">
+                <p>aatroxakali
+                    Aatrox and Akali is not a very viable bot lane duo. Due to the short range of the duo it would be very hard to do anything except get poked down before six. However, there can be situations where the duo are capable of working in the bot lane. If the enemy bot lane don't respect the early close range power you have and walks to forward, the Aatrox (Q)’s and the chase potential from Akali’s level 2 from the passive autos, (Q) damage and (E) chase especially in a long lane can get a early kill if played well. If this can be done, this lane can be snowballed if the enemy continues not to respect the power. Otherwise, you would be hard pressed to do anything until 6, where the Akali and Aatrox massively spike and can all in to get a kill. However, the cooldowns for the all in is very long and the duo would most likely behind from the harass that the team receives early game. For these reasons, this not not a very viable bot lane duo, but can work in certain situations.
+                </p>
+            </div>
+            <div id="aatroxalistar">
+                <p>aatroxalistar
+                    Aatrox and Alistar is a barley viable bot lane duo. Due to the extremely short range the duo is, it is easy to be harassed during early game, however, due to the healing from both the Aatrox and Alistar passives it can be managed. This duo is very situational and could be played against a more squishy and short ranged enemy duo. The stun (E)  and dash knock up (W-Q) from the alistar can help the Aatrox get a full combo and kill one of the opponents. The level 6 potential would also be very high due to the engage and healing/tankiness. This could help start a snowball and make a “raid boss”/unkillable Aatrox if you could amass a couple of kills and pick good fights early. The tankiness and teamfight potential of the Aatrox and Alistar can be great for winning skirmishes and teamfights in the later stages of the game make it a situational, barely viable bot lane duo.
+                </p>
+            </div>
+            <div id="aatroxamumu">
+                <p>aatroxamumu</p>
+            </div>
+            <div id="ahriakali">
+                <p>ahriakali</p>
+            </div>
+            <div id="ahrialistar">
+                <p>ahrialistar</p>
+            </div>
+            <div id="ahriamumu">
+                <p>ahriamumu</p>
+            </div>
+            <div id="akalialistar">
+                <p>akalialistar</p>
+            </div>
+            <div id="akaliamumu">
+                <p>akaliamumu</p>
+            </div>
+            <div id="alistaramumu">
+                <p>alistaramumu</p>
+            </div>
+            <div id="aatroxanivia">
+                <p>aatroxanivia</p>
+            </div>
+            <div id="aatroxannie">
+                <p>aatroxannie</p>
+            </div>
+            <div id="aatroxaphelios">
+                <p>aatroxaphelios</p>
+            </div>
+            <div id="aatroxashe">
+                <p>aatroxashe</p>
+            </div>
+            <div id="aatroxasol">
+                <p>aatroxasol</p>
+            </div>
+            <div id="aatroxazir">
+                <p>aatroxazir</p>
+            </div>
+            <div id="aatroxbard">
+                <p>aatroxbard</p>
+            </div>
+            <div id="aatroxblitzcrank">
+                <p>aatroxblitzcrank</p>
+            </div>
+            <div id="aatroxbrand">
+                <p>aatroxbrand</p>
+            </div>
+            <div id="aatroxbraum">
+                <p>aatroxbraum</p>
+            </div>
+            <div id="aatroxcaitlin">
+                <p>aatroxcaitlin</p>
+            </div>
+            <div id="aatroxcamille">
+                <p>aatroxcamille</p>
+            </div>
+            <div id="aatroxcassiopeia">
+                <p>aatroxcassiopeia</p>
+            </div>
+            <div id="aatroxchogath">
+                <p>aatroxchogath</p>
+            </div>
+            <div id="aatroxcorki">
+                <p>aatroxcorki</p>
+            </div>
+            <div id="aatroxdarius">
+                <p>aatroxdarius</p>
+            </div>
+            <div id="aatroxdiana">
+                <p>aatroxdiana</p>
+            </div>
+            <div id="aatroxdrmundo">
+                <p>aatroxdrmundo</p>
+            </div>
+            <div id="aatroxdraven">
+                <p>aatroxdraven</p>
+            </div>
+            <div id="aatroxekko">
+                <p>aatroxekko</p>
+            </div>
+            <div id="aatroxelise">
+                <p>aatroxelise</p>
+            </div>
+            <div id="aatroxevelynn">
+                <p>aatroxevelynn</p>
+            </div>
+            <div id="aatroxezreal">
+                <p>aatroxezreal</p>
+            </div>
+            <div id="aatroxfiddlesticks">
+                <p>aatroxfiddlesticks</p>
+            </div>
+            <div id="aatroxfiora">
+                <p>aatroxfiora</p>
+            </div>
+            <div id="aatroxfizz">
+                <p>aatroxfizz</p>
+            </div>
+            <div id="aatroxgallio">
+                <p>aatroxgallio</p>
+            </div>
+            <div id="aatroxgangplank">
+                <p>aatroxgangplank</p>
+            </div>
+            <div id="aatroxgaren">
+                <p>aatroxgaren</p>
+            </div>
+            <div id="aatroxgnar">
+                <p>aatroxgnar</p>
+            </div>
+            <div id="aatroxgragas">
+                <p>aatroxgragas</p>
+            </div>
+            <div id="aatroxgraves">
+                <p>aatroxgraves</p>
+            </div>
+            <div id="aatroxhecarim">
+                <p>aatroxhecarim</p>
+            </div>
+            <div id="aatroxheimerdinger">
+                <p>aatroxheimerdinger</p>
+            </div>
+            <div id="aatroxillaoi">
+                <p>aatroxillaoi</p>
+            </div>
+            <div id="aatroxirelia">
+                <p>aatroxirelia</p>
+            </div>
+            <div id="aatroxivern">
+                <p>aatroxivern</p>
+            </div>
+            <div id="aatroxjanna">
+                <p>aatroxjanna</p>
+            </div>
+            <div id="aatroxjarvaniv">
+                <p>aatroxjarvaniv</p>
+            </div>
+            <div id="aatroxjax">
+                <p>aatroxjax</p>
+            </div>
+            <div id="aatroxjayce">
+                <p>aatroxjayce</p>
+            </div>
+            <div id="aatroxjhin">
+                <p>aatroxjhin</p>
+            </div>
+            <div id="aatroxjinx">
+                <p>aatroxjinx</p>
+            </div>
+            <div id="aatroxkaisa">
+                <p>aatroxkaisa</p>
+            </div>
+            <div id="aatroxkalista">
+                <p>aatroxkalista</p>
+            </div>
+            <div id="aatroxkarma">
+                <p>aatroxkarma</p>
+            </div>
+            <div id="aatroxkarthus">
+                <p>aatroxkarthus</p>
+            </div>
+            <div id="aatroxkassadin">
+                <p>aatroxkassadin</p>
+            </div>
+            <div id="aatroxkatarina">
+                <p>aatroxkatarina</p>
+            </div>
+            <div id="aatroxkayle">
+                <p>aatroxkayle</p>
+            </div>
+            <div id="aatroxkayn">
+                <p>aatroxkayn</p>
+            </div>
+            <div id="aatroxkennen">
+                <p>aatroxkennen</p>
+            </div>
+            <div id="aatroxkhazix">
+                <p>aatroxkhazix</p>
+            </div>
+            <div id="aatroxkindred">
+                <p>aatroxkindred</p>
+            </div>
+            <div id="aatroxkled">
+                <p>aatroxkled</p>
+            </div>
+            <div id="aatroxkogmaw">
+                <p>aatroxkogmaw</p>
+            </div>
+            <div id="aatroxleblanc">
+                <p>aatroxleblanc</p>
+            </div>
+            <div id="aatroxleesin">
+                <p>aatroxleesin</p>
+            </div>
+            <div id="aatroxleona">
+                <p>aatroxleona</p>
+            </div>
+            <div id="aatroxlillia">
+                <p>aatroxlillia</p>
+            </div>
+            <div id="aatroxlissandra">
+                <p>aatroxlissandra</p>
+            </div>
+            <div id="aatroxlucian">
+                <p>aatroxlucian</p>
+            </div>
+            <div id="aatroxlulu">
+                <p>aatroxlulu</p>
+            </div>
+            <div id="aatroxlux">
+                <p>aatroxlux</p>
+            </div>
+            <div id="aatroxmalphite">
+                <p>aatroxmalphite</p>
+            </div>
+            <div id="aatroxmalzahar">
+                <p>aatroxmalzahar</p>
+            </div>
+            <div id="aatroxmaokai">
+                <p>aatroxmaokai</p>
+            </div>
+            <div id="aatroxmasteryi">
+                <p>aatroxmasteryi</p>
+            </div>
+            <div id="aatroxmissfortune">
+                <p>aatroxmissfortune</p>
+            </div>
+            <div id="aatroxmordekaiser">
+                <p>aatroxmordekaiser</p>
+            </div>
+            <div id="aatroxmorgana">
+                <p>aatroxmorgana</p>
+            </div>
+            <div id="aatroxnami">
+                <p>aatroxnami</p>
+            </div>
+            <div id="aatroxnasus">
+                <p>aatroxnasus</p>
+            </div>
+            <div id="aatroxnautilus">
+                <p>aatroxnautilus</p>
+            </div>
+            <div id="aatroxneeko">
+                <p>aatroxneeko</p>
+            </div>
+            <div id="aatroxnidalee">
+                <p>aatroxnidalee</p>
+            </div>
+            <div id="aatroxnocturne">
+                <p>aatroxnocturne</p>
+            </div>
+            <div id="aatroxnunu">
+                <p>aatroxnunu</p>
+            </div>
+            <div id="aatroxolaf">
+                <p>aatroxolaf</p>
+            </div>
+            <div id="aatroxorianna">
+                <p>aatroxorianna</p>
+            </div>
+            <div id="aatroxornn">
+                <p>aatroxornn</p>
+            </div>
+            <div id="aatroxpantheon">
+                <p>aatroxpantheon</p>
+            </div>
+            <div id="aatroxpoppy">
+                <p>aatroxpoppy</p>
+            </div>
+            <div id="aatroxpyke">
+                <p>aatroxpyke</p>
+            </div>
+            <div id="aatroxqiyana">
+                <p>aatroxqiyana</p>
+            </div>
+            <div id="aatroxquinn">
+                <p>aatroxquinn</p>
+            </div>
+            <div id="aatroxrakan">
+                <p>aatroxrakan</p>
+            </div>
+            <div id="aatroxrammus">
+                <p>aatroxrammus</p>
+            </div>
+            <div id="aatroxreksai">
+                <p>aatroxreksai</p>
+            </div>
+            <div id="aatroxrenekton">
+                <p>aatroxrenekton</p>
+            </div>
+            <div id="aatroxrengar">
+                <p>aatroxrengar</p>
+            </div>
+            <div id="aatroxriven">
+                <p>aatroxriven</p>
+            </div>
+            <div id="aatroxrumble">
+                <p>aatroxrumble</p>
+            </div>
+            <div id="aatroxryze">
+                <p>aatroxryze</p>
+            </div>
+            <div id="aatroxsejuani">
+                <p>aatroxsejuani</p>
+            </div>
+            <div id="aatroxsenna">
+                <p>aatroxsenna</p>
+            </div>
+            <div id="aatroxsett">
+                <p>aatroxsett</p>
+            </div>
+            <div id="aatroxshaco">
+                <p>aatroxshaco</p>
+            </div>
+            <div id="aatroxshen">
+                <p>aatroxshen</p>
+            </div>
+            <div id="aatroxshyvana">
+                <p>aatroxshyvana</p>
+            </div>
+            <div id="aatroxsinged">
+                <p>aatroxsinged</p>
+            </div>
+            <div id="aatroxsion">
+                <p>aatroxsion</p>
+            </div>
+            <div id="aatroxsivir">
+                <p>aatroxsivir</p>
+            </div>
+            <div id="aatroxskarner">
+                <p>aatroxskarner</p>
+            </div>
+            <div id="aatroxsona">
+                <p>aatroxsona</p>
+            </div>
+            <div id="aatroxsoraka">
+                <p>aatroxsoraka</p>
+            </div>
+            <div id="aatroxswain">
+                <p>aatroxswain</p>
+            </div>
+            <div id="aatroxsylas">
+                <p>aatroxsylas</p>
+            </div>
+            <div id="aatroxsyndra">
+                <p>aatroxsyndra</p>
+            </div>
+            <div id="aatroxtahmkench">
+                <p>aatroxtahmkench</p>
+            </div>
+            <div id="aatroxtaliyah">
+                <p>aatroxtaliyah</p>
+            </div>
+            <div id="aatroxtalon">
+                <p>aatroxtalon</p>
+            </div>
+            <div id="aatroxtaric">
+                <p>aatroxtaric</p>
+            </div>
+            <div id="aatroxteemo">
+                <p>aatroxteemo</p>
+            </div>
+            <div id="aatroxthresh">
+                <p>aatroxthresh</p>
+            </div>
+            <div id="aatroxtristana">
+                <p>aatroxtristana</p>
+            </div>
+            <div id="aatroxtrundle">
+                <p>aatroxtrundle</p>
+            </div>
+            <div id="aatroxtryndamere">
+                <p>aatroxtryndamere</p>
+            </div>
+            <div id="aatroxtwistedfate">
+                <p>aatroxtwistedfate</p>
+            </div>
+            <div id="aatroxtwitch">
+                <p>aatroxtwitch</p>
+            </div>
+            <div id="aatroxudyr">
+                <p>aatroxudyr</p>
+            </div>
+            <div id="aatroxurgot">
+                <p>aatroxurgot</p>
+            </div>
+            <div id="aatroxvarus">
+                <p>aatroxvarus</p>
+            </div>
+            <div id="aatroxvayne">
+                <p>aatroxvayne</p>
+            </div>
+            <div id="aatroxveigar">
+                <p>aatroxveigar</p>
+            </div>
+            <div id="aatroxvelkoz">
+                <p>aatroxvelkoz</p>
+            </div>
+            <div id="aatroxvi">
+                <p>aatroxvi</p>
+            </div>
+            <div id="aatroxviktor">
+                <p>aatroxviktor</p>
+            </div>
+            <div id="aatroxvladimir">
+                <p>aatroxvladimir</p>
+            </div>
+            <div id="aatroxvolibear">
+                <p>aatroxvolibear</p>
+            </div>
+            <div id="aatroxwarwick">
+                <p>aatroxwarwick</p>
+            </div>
+            <div id="aatroxwukong">
+                <p>aatroxwukong</p>
+            </div>
+            <div id="aatroxxayah">
+                <p>aatroxxayah</p>
+            </div>
+            <div id="aatroxzayah">
+                <p>aatroxzayah</p>
+            </div>
+            <div id="aatroxzilean">
+                <p>aatroxzilean</p>
+            </div>
+            <div id="aatroxzoe">
+                <p>aatroxzoe</p>
+            </div>
+            <div id="aatroxzyra">
+                <p>aatroxzyra</p>
+            </div>
+            <div id="ahrianivia">
+                <p>ahrianivia</p>
+            </div>
+            <div id="ahriannie">
+                <p>ahriannie</p>
+            </div>
+            <div id="ahriaphelios">
+                <p>ahriaphelios</p>
+            </div>
+            </div>
+        </div>
+        
+
+        
+        <script>
+            var champ1 = "none"
+            var champ2 = "none"
+            var duo_id = "0"
+            var lastchamp = 2
+            var selectedArticle = 'initial'
+            var articles = document.querySelectorAll(".articles > div")
+
+            const tierImages = {
+                "aatroxahritier": "https://static.wikia.nocookie.net/leagueoflegends/images/8/81/League_of_Legends_icon_old2.png/revision/latest?cb=20191018221818",
+                "ahriakalitier": "https://static.wikia.nocookie.net/leagueoflegends/images/8/81/League_of_Legends_icon_old2.png/revision/latest?cb=20191018221818",
+
+                "defaulttier": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/2048px-Icon-round-Question_mark.svg.png"
+            };
+
+
+            document.querySelectorAll(".champpic").forEach(img => {
+                img.addEventListener("click", function() {
+                    ChampClick(this.id, this.src);
+                })
+            })
+            
+                
+            function ChampClick(champ,url){
+                if(lastchamp==1){
+                    champ2 = champ
+                    document.getElementById("c2").src=url
+                    lastchamp = 2
+                }else{
+                    champ1 = champ;
+                    document.getElementById("c1").src=url
+                    lastchamp = 1
+                }
+
+                if(champ1<=champ2){
+                    duo_id = champ1+champ2
+                }else{
+                    duo_id = champ2+champ1
+                }
+
+                const selectedTierUrl = tierImages[duo_id + "tier"] || tierImages["defaulttier"];
+                document.getElementById("combo_tier_image").src = selectedTierUrl
+
+
+                document.querySelector(".articles").style.display = "block";
+
+                articles.forEach(article => {
+                    article.style.display = "none"
+                });
+
+                selectedArticle = document.getElementById(duo_id)
+                if(selectedArticle) {
+                    selectedArticle.style.display = "block"
+                }
+            }
+        </script>
+       
+    </body>
+</html>
